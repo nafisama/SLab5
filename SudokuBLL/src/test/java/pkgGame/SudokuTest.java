@@ -1,16 +1,15 @@
 package pkgGame;
 
-import static org.junit.Assert.*;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
-
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class SudokuTest {
 
-/*	private void PrintStars() {
+ 	private void PrintStars() {
 		for (int i = 0; i < 50; i++)
 			System.out.print("*");
 		System.out.println();
@@ -27,11 +26,13 @@ public class SudokuTest {
 
 	}
 
-	@Test(expected = Exception.class)
-	public void Sudoku_Test2() throws Exception {
-
-		Sudoku s1 = new Sudoku(10);
-
+	@Test
+	public void Sudoku_Test2() {
+	 
+	  Assertions.assertThrows(Exception.class, () -> {
+		  Sudoku s1 = new Sudoku(10);
+	  });
+	 
 	}
 
 	@Test
@@ -121,7 +122,7 @@ public class SudokuTest {
 			fail("Test failed to build a Sudoku");
 		}
 
-	}*/
+	} 
 
 
 	@Test
