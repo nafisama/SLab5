@@ -109,7 +109,6 @@ public class Game extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return this.sudoku;
 	}
 

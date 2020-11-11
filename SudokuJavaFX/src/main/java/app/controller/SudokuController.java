@@ -325,9 +325,8 @@ public class SudokuController implements Initializable {
 
 							if (!s.isValidValue(CellTo.getiRow(), CellTo.getiCol(), CellFrom.getiCellValue())) {
 								if (game.getShowHints()) {
-
+									// If you're here, there's a mistake
 								}
-
 							}
 
 							//	This is the code that is actually taking the cell value from the drag-from 
@@ -346,9 +345,7 @@ public class SudokuController implements Initializable {
 
 				gridPaneSudoku.add(paneTarget, iCol, iRow); // Add the pane to the grid
 			}
-
 		}
-
 		return gridPaneSudoku;
 	}
 

@@ -17,7 +17,6 @@ import pkgEnum.eGameDifficulty;
 public class GameBorderController implements Initializable  {
 
 	private Game game;	
-
 	
 	@FXML
 	private MenuBar mnuMenu;
@@ -38,6 +37,7 @@ public class GameBorderController implements Initializable  {
 	{
 		this.game = game;
 	}
+	
 	@FXML
 	private void mnuPuzzleSizeChange(ActionEvent event) {
 	
@@ -54,9 +54,8 @@ public class GameBorderController implements Initializable  {
 
 		}
 		System.out.println("Puzzle Size Changed");
-		
-		
 	}
+	
 	public eGameDifficulty geteGameDifficulty() {
 		
 		RadioMenuItem mi = (RadioMenuItem)tgDifficulty.getSelectedToggle(); 		
