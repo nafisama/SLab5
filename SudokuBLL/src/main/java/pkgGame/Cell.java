@@ -1,5 +1,5 @@
 package pkgGame;
-
+//check
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,7 +11,7 @@ public class Cell implements Serializable {
 	public Cell(int iRow, int iCol) {
 		super();
 		this.iRow = iRow;
-		this.iCol = iCol;
+		this.iCol = iCol; 
 	}
 
 	public int getiRow() {
