@@ -27,6 +27,73 @@ import pkgHelper.PuzzleViolation;
  */
 public class Sudoku extends LatinSquare implements Serializable {
 
+	/* Remove Cells Method && Handler Function-CountZeroes
+	 * 
+	 * EASY =30% , MEDIUM = 55% , DIFFICULT=75%
+	 *  
+	 * */
+	
+	private void RemoveCells() {
+		int cntZeroes=0;
+		int DifficultyLevel;
+		int DifficultyComparer;
+	
+		do {
+			Random rand = new SecureRandom();
+			int iRandomRow = rand.nextInt(this.iSize);
+			int iRandomCol = rand.nextInt(this.iSize);
+			this.getPuzzle()[iRandomRow][iRandomCol] = 0;
+			cntZeroes=this.CountZeroes();
+			DifficultyComparer=(int) ((double) cntZeroes/(this.iSize*this.iSize)) *100 ;
+			DifficultyLevel=this.eGameDifficulty.getiDifficulty();
+		}
+		while(DifficultyComparer < DifficultyLevel);
+		
+		
+		
+	}
+	
+	
+	
+	// CountZeroes function
+	
+	public int CountZeroes() {
+		
+		int cnt=0;
+		for (int i = 0; i < super.getLatinSquare().length; i++) {
+			for (int j = 0; j < super.getLatinSquare().length; j++) {
+				if (super.getLatinSquare()[i][j] == 0) {
+					cnt++;
+				}
+			}
+		}
+		return cnt;
+	}
+	
+	
+	/*
+	private void RemoveCells() {
+		SetRemaingCells();
+
+		do {
+			Random rand = new SecureRandom();
+			int iRandomRow = rand.nextInt(this.iSize);
+			int iRandomCol = rand.nextInt(this.iSize);
+			this.getPuzzle()[iRandomRow][iRandomCol] = 0;
+			SetRemaingCells();
+		} while (!IsDifficultyMet(PossibleValuesMultiplier(this.cells)));
+		//eGameDifficulty eActualGameDifficulty = eGameDifficulty.get(iPossibleValues);
+
+		/*if (eActualGameDifficulty == null)
+			return false;
+		if (eActualGameDifficulty.getiDifficulty() >= this.eGameDifficulty.getiDifficulty())
+			return true;
+
+		return false;
+	}*/
+
+	
+	
 	/**
 	 * 
 	 * iSize - the length of the width/height of the Sudoku puzzle.
@@ -75,16 +142,21 @@ public class Sudoku extends LatinSquare implements Serializable {
 	 * @param iSize- length of the width/height of the puzzle
 	 * @throws Exception if the iSize given doesn't have a whole number square root
 	 */
-	public Sudoku(int iSize) throws Exception {
+	private Sudoku(int iSize) throws Exception {
 
 		this();
 		this.iSize = iSize;
 
 		double SQRT = Math.sqrt(iSize);
+		
 		if ((SQRT == Math.floor(SQRT)) && !Double.isInfinite(SQRT)) {
+			
 			this.iSqrtSize = (int) SQRT;
+			
 		} else {
+			
 			throw new Exception("Invalid size");
+		
 		}
 
 		int[][] puzzle = new int[iSize][iSize];
@@ -93,8 +165,7 @@ public class Sudoku extends LatinSquare implements Serializable {
 		FillDiagonalRegions();
 		SetCells();
 		fillRemaining(this.cells.get(Objects.hash(0, iSqrtSize)));
-		//FIXME - Fix this code
-		//RemoveCells();
+		RemoveCells();
 
 	}
 
@@ -147,18 +218,17 @@ public class Sudoku extends LatinSquare implements Serializable {
 	 * @version 1.5
 	 * @since Lab #5
 	 */
-	private void RemoveCells() {
-		SetRemaingCells();
-
-		do {
-			Random rand = new SecureRandom();
-			int iRandomRow = rand.nextInt(this.iSize);
-			int iRandomCol = rand.nextInt(this.iSize);
-			this.getPuzzle()[iRandomRow][iRandomCol] = 0;
-			SetRemaingCells();
-		} while (!IsDifficultyMet(PossibleValuesMultiplier(this.cells)));
-
-	}
+	
+	/*
+	 * private void RemoveCells() { SetRemaingCells();
+	 * 
+	 * do { Random rand = new SecureRandom(); int iRandomRow =
+	 * rand.nextInt(this.iSize); int iRandomCol = rand.nextInt(this.iSize);
+	 * this.getPuzzle()[iRandomRow][iRandomCol] = 0; SetRemaingCells(); } while
+	 * (!IsDifficultyMet(PossibleValuesMultiplier(this.cells)));
+	 * 
+	 * }
+	 */
 
 	/**
 	 * IsDifficultyMet - will return boolean if the given difficulty score meets the

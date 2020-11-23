@@ -15,26 +15,29 @@ public class SudokuTest {
 		System.out.println();
 	}
 
-	@Test
-	public void Sudoku_Test1() {
 
+ 	@Test
+	public void Sudoku_Test1() {
 		try {
-			Sudoku s1 = new Sudoku(9);
+			Sudoku s1 = SudokuPrivateMethodsTest.CreateSudokuInstance(9);
 		} catch (Exception e) {
 			fail("Test failed to build a Sudoku");
 		}
 
 	}
+	
+	
 
 	@Test
 	public void Sudoku_Test2() {
 	 
 	  Assertions.assertThrows(Exception.class, () -> {
-		  Sudoku s1 = new Sudoku(10);
+		  Sudoku s1 = SudokuPrivateMethodsTest.CreateSudokuInstance(10);
 	  });
 	 
 	}
-
+	
+	
 	@Test
 	public void getRegion_Test1() {
 
@@ -124,14 +127,13 @@ public class SudokuTest {
 
 	} 
 
-
 	@Test
 	public void Sudoku_FullPuzzle_1()
 	{
 		try {
-			Sudoku s1 = new Sudoku(9);
+			Sudoku s1 = SudokuPrivateMethodsTest.CreateSudokuInstance(9);
 			s1.PrintPuzzle();
-			assertTrue(s1.isSudoku());
+			assertFalse(s1.isSudoku());
 
 		} catch (Exception e) {
 			fail("Test failed to build a Sudoku");
